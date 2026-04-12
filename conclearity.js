@@ -3,9 +3,9 @@
     const pallete = {system: "#22c55e",ui:"#3b82f6",base:"#a855f7",unsafe:"#f59e0b",asserts:"#ef4444",unknown:"#94a3b8"}
     if(window.Conclearity){
         var oldconc = window.Conclearity
-        if (noreuse)(window.Conclearity.Logger("Reuse (HOT RELOAD)",pallete.unsafe).info("Conclearity has already been launched, but as defined on noreuse arg, HOT RELOAD is enabled."),window.Conclearity.uload())
+        if (noreuse)(oldconc.Logger("Reuse (HOT RELOAD)",pallete.unsafe).info("Conclearity has already been launched, but as defined on noreuse arg, HOT RELOAD is enabled."),oldconc.uload())
         else 
-            return window.Conclearity.Logger("Reuse",pallete.unsafe
+            return oldconc.Logger("Reuse",pallete.unsafe
             ).info("Conclearity has already been launched. to rerun it do `window.Conclearity.uload()`, then initialize this again or alternativelly do with 1 being the arg")
     }
     window.Conclearity = (function(){
@@ -188,9 +188,7 @@
         return ConclearityObject
     })()
 
-    if (oldconc){
-        version += 0.01
-    }
+    if (oldconc) window.version += 0.01
 
-    window.Conclearity.Logger(`UP & running on version: v${version}`,pallete.system).log()
+    window.Conclearity.Logger(`UP & running on version: v${window.version}`,pallete.system).log()
 })(1)
