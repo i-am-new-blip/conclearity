@@ -3,7 +3,7 @@
     const pallete = {system: "#22c55e",ui:"#3b82f6",base:"#a855f7",unsafe:"#f59e0b",asserts:"#ef4444",unknown:"#94a3b8"}
     if(window.Conclearity){
         var oldconc = window.Conclearity
-        if (noreuse)window.Conclearity.uload()
+        if (noreuse)(window.Conclearity.Logger("Reuse (HOT RELOAD)",pallete.unsafe).info("Conclearity has already been launched, but as defined on noreuse arg, HOT RELOAD is enabled."),window.Conclearity.uload())
         else 
             return window.Conclearity.Logger("Reuse",pallete.unsafe
             ).info("Conclearity has already been launched. to rerun it do `window.Conclearity.uload()`, then initialize this again or alternativelly do with 1 being the arg")

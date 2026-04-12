@@ -53,6 +53,4 @@ PluginCheck=function(p){
                 return ((l.settings?l.settings.map(X=>(assert(X.type,"Type must exist."),i[X.type](X))):0),l)
 }
 
-RestartWarner=(function(a=0,r=[]){return {a:p=>(r.push(p),a?0:(a=1,window.Clarity.addEventListener(document,"hashchange",this.b))),b:()=>{if(r.length)Swal.fire({title:"RELOAD REQUIRED",html:`The following plugins require a restart:<br><pre><code>${r.join(", ")}</code></pre>`,icon:"warning",showCancelButton:!0,confirmButtonText:"Restart now",cancelButtonText:"Later!"}).then(res=>{if (res.isConfirmed)location.reload()});r=[]}}})()
-
 MinimalisticIDB=function(v=1,k="ClarityStore",o="a",_="readwrite",__="readonly"){e=(b,a)=>new Promise((s,j)=>{r=indexedDB.open(k,v),r.onupgradeneeded=()=>{r.result.createObjectStore(o)},r.onsuccess=()=>{p=r.result,l=p.transaction(o,b),h=l.objectStore(o),q=a(h);l.oncomplete=()=>s(q),l.onerror=()=>j(l.error)},r.onerror=()=>j(r.error)});return{s:(k,v)=>e(_,s=>s.put(v,k)),g:k=>e(__,s=>s.get(k)),d:k=>e(_,s=>s.delete(k))}}
