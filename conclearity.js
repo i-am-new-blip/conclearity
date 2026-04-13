@@ -8,10 +8,11 @@
             return oldconc.Logger("Reuse",pallete.unsafe
             ).info("Conclearity has already been launched. to rerun it do `window.Conclearity.uload()`, then initialize this again or alternativelly do with 1 being the arg")
     }
-    window.Conclearity = (function(){
+    window.Conclearity = (function(plugins){
         const ConclearityObject = {
             observing:0,
             hashmaps:{},
+            plugins,
             uload:function(){
                 for (let i=0;i<this.uload.evl.length;i++){let v=this.uload.evl[i];v[0].removeEventListener(v[1],v[2])} // kills event listeners
                 for (let i=0;i<this.uload.el.length;i++) this.uload.el[i].remove() // kills elements
