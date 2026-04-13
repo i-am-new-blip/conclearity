@@ -93,3 +93,38 @@ export type Plugin = {
 
     settings?: Setting[];
 };
+
+// example plugin
+
+const MyPlugin: Plugin = {
+    name: "AdBlock",
+    description: "removes annoying ads",
+    authors: [{ name: "you", id: 1n }],
+
+    start() {
+        console.log("started");
+    },
+
+    stop() {
+        console.log("stopped");
+    },
+
+    settings: [
+        {
+            type: "BOOLEAN",
+            description: "Enable aggressive mode",
+            default: true,
+            onChange(v) {
+                console.log("aggressive:", v);
+            }
+        },
+        {
+            type: "SELECT",
+            description: "Mode",
+            options: [
+                { label: "Normal", value: "normal", default: true },
+                { label: "Aggressive", value: "aggressive" }
+            ]
+        }
+    ]
+};
